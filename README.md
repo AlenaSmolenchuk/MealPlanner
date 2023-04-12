@@ -19,7 +19,7 @@ ingredient 3
 
 Print the message that the meal is saved successfully: The meal has been added!.
 
-# Stage 2/6: Create a menu
+# Stage 2/6: Create a menu (in process)
 
 To complete this stage, the program must comply with the following requirements:
 

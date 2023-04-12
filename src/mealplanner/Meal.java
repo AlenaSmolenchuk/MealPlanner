@@ -1,5 +1,3 @@
-* this class will be needed later *
-
 package mealplanner;
 
 public class Meal {
@@ -12,6 +10,7 @@ public class Meal {
         this.name = name;
         this.ingredients = ingredients;
     }
+
 
 
     public String getName() {
@@ -28,5 +27,11 @@ public class Meal {
 
     public void setIngredients(String[] ingredients) {
         this.ingredients = ingredients;
+    }
+
+    @Override
+    public String toString(){
+        return "Name: " + name +
+                "\n Ingredients: " + ingredients;
     }
 }

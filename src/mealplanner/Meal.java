@@ -31,5 +31,6 @@ public class Meal {
     public String toString(){
         return "Name: " + name +
                 "\n Ingredients: " + ingredients;
+
     }
 }

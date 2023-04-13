@@ -11,7 +11,6 @@ public class Meal {
         this.ingredients = ingredients;
     }
 
-
     public String getName() {
         return name;
     }

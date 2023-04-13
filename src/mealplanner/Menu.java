@@ -3,7 +3,7 @@ package mealplanner;
 import java.util.HashMap;
 import java.util.Scanner;
 
-public class Menu {
+public class Menu { 
     private HashMap<String,Meal> menu;
     Scanner sc = new Scanner(System.in);
     Recept recept = new Recept();

@@ -12,8 +12,6 @@ public class Recept {
 
     Scanner sc = new Scanner(System.in);
 
-
-
     protected HashMap<String,Meal> addRecept(){
          menu = new HashMap<>();
         System.out.println("Which meal do you want to add (breakfast, lunch, dinner)?");

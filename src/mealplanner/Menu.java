@@ -4,8 +4,7 @@ import java.util.HashMap;
 import java.util.Scanner;
 
 public class Menu {  
-
-    private HashMap<String,Meal> menu;
+    private HashMap<String,Meal> menu = new HashMap<>(1000000);
     Scanner sc = new Scanner(System.in);
     Recept recept = new Recept();
 

@@ -22,7 +22,6 @@ public class Menu {
                 System.out.println("Bye!");
                 return;
             default:
-                System.out.println("What would you like to do (add, show, exit)?");
                 start();
         }
     }

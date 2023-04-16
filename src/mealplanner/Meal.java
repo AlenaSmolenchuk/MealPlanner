@@ -6,7 +6,6 @@ public class Meal {
     private String[] ingredients;
 
     public Meal(String name, String[] ingredients) {
-
         this.name = name;
         this.ingredients = ingredients;
     }
@@ -31,6 +30,5 @@ public class Meal {
     public String toString(){
         return "Name: " + name +
                 "\n Ingredients: " + ingredients;
-
     }
 }

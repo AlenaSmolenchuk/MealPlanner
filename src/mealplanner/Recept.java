@@ -23,7 +23,7 @@ public class Recept {
 
         System.out.println("Input the meal's name:");
         name = sc.nextLine();
-        while (!Pattern.matches("[a-zA-Z]+", name)) {
+        while (!Pattern.matches("[a-zA-Z ]+", name)) {
             System.out.println("Wrong format. Use letters only!");
             name = sc.nextLine();
         }
@@ -31,7 +31,7 @@ public class Recept {
         System.out.println("Input the ingredients:");
         ingredients = sc.nextLine().split(",");
         for (int i = 0; i < ingredients.length; i++) {
-            while (!Pattern.matches("[a-zA-Z]+", ingredients[i])) {
+            while (!Pattern.matches("[a-zA-Z ]+", ingredients[i])) {
                 System.out.println("Wrong format. Use letters only!");
                 ingredients = sc.nextLine().split(",");
             }

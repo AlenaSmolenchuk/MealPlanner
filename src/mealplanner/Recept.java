@@ -29,11 +29,11 @@ public class Recept {
         }
 
         System.out.println("Input the ingredients:");
-        ingredients = sc.nextLine().split(",");
+        ingredients = sc.nextLine().split(", ");
         for (int i = 0; i < ingredients.length; i++) {
             while (!Pattern.matches("[a-zA-Z ]+", ingredients[i])) {
                 System.out.println("Wrong format. Use letters only!");
-                ingredients = sc.nextLine().split(",");
+                ingredients = sc.nextLine().split(", ");
             }
         }
 

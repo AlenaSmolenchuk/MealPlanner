@@ -10,6 +10,7 @@ public class Recept {
     private String category;
     private String name;
     private String[] ingredients;
+
     Scanner sc = new Scanner(System.in);
 
     protected HashMap<String,Meal> addRecept() {

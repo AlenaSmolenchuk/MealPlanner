@@ -31,7 +31,7 @@ public class Recept {
         System.out.println("Input the ingredients:");
         ingredients = sc.nextLine().split(",");
         for (int i = 0; i < ingredients.length; i++) {
-            if (!Pattern.matches("[a-zA-Z ]+", ingredients[i])|| Objekt.equals(ingredients[i]," ")) {
+            if (!Pattern.matches("[a-zA-Z ]+", ingredients[i]) || Objekt.equals(ingredients[i]," ")) {
                 System.out.println("Wrong format. Use letters only!");
                 i = 0;
                 ingredients = sc.nextLine().split(",");

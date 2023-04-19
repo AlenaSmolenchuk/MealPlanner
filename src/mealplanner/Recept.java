@@ -53,6 +53,6 @@ public class Recept {
         }
         for(Map.Entry<String,Meal> entry : menu.entrySet()){
             System.out.println("Category: " + entry.getKey() + "\n" + entry.getValue());
-        }
+        } 
     }
 }

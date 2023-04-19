@@ -6,7 +6,7 @@ import java.util.Scanner;
 import java.util.regex.Pattern;
 
 public class Recept { 
-
+    private HashMap<String, Meal> menu = new HashMap<>();
     private String category;
     private String name;
     private String[] ingredients;

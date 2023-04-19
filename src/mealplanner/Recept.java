@@ -5,7 +5,7 @@ import java.util.Map;
 import java.util.Scanner;
 import java.util.regex.Pattern;
 
-public class Recept {
+public class Recept { 
 
     private String category;
     private String name;

@@ -4,7 +4,7 @@ public class Meal {
 
     private String name;
     private String[] ingredients;
-
+ 
     public Meal(String name, String[] ingredients) {
         this.name = name;
         this.ingredients = ingredients;

@@ -35,7 +35,7 @@ To complete this stage, the program must comply with the following requirements:
 # Stage 3/6: Database storage (in process)
 
 In this stage, we're going to store meal data in database tables. When the program restarts, the saved data should be available in the program.
-
+ 
 1. Your program should connect to a database named meals_db;
 2. Create two tables in this database schema. Name the first one as meals with three columns: category (varchar), meal (varchar), and meal_id (integer). Name the second table ingredients; it must contain three columns: ingredient (varchar), ingredient_id (integer), and meal_id (integer). meal_id in both tables must match!
 3. Read all data in the tables, so their contents are available before a show operation is requested;

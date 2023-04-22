@@ -49,7 +49,7 @@ public class Recept {
             System.out.println("No meals saved. Add a meal first.");
             return;
         }
-        for(Map.Entry<String,Meal> entry : menu.entrySet()){
+        for(Map.Entry<String,Meal> entry : menu.entrySet()) {
             System.out.println("Category: " + entry.getKey() + "\n" + entry.getValue());
         } 
     }

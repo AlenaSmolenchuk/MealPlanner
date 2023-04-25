@@ -4,7 +4,7 @@ public enum Category {
     BREAKFAST("breakfast"),
     LUNCH("lunch"),
     DINNER("dinner");
-
+ 
     final String name;
 
     Category(String name) {

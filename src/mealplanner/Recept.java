@@ -6,7 +6,7 @@ public class Recept {
     private Category category;
     private String name;
     private String[] ingredients;
-    private String ingredient;
+
 
     Scanner sc = new Scanner(System.in);
 
@@ -21,27 +21,28 @@ public class Recept {
         }
 
         System.out.println("Input the meal's name:");
-        name = "";
+        name = sc.nextLine();
         while (Checking.wrongFormat(name)) {
             System.out.println("Wrong format. Use letters only!");
             name = sc.nextLine();
         }
 
         System.out.println("Input the ingredients:");
-        ingredient = "";
-        while (Checking.invaludIngredient(ingredient)){
-            ingredient = sc.nextLine();
-            System.out.println("Wrong format. Use letters only!");
+        ingredients = sc.nextLine().split(",");
+        for (int i = 0; i < ingredients.length; i++){
+            if(Checking.invaludIngredient(ingredients[i])) {
+                System.out.println("Wrong format. Use letters only!");
+                i = 0;
+                ingredients = sc.nextLine().split(",");
+            }
         }
 
-          ingredients = ingredient.split("\\s*,\\s*");
-          Tables.save(new Meal(category,name,ingredients));
+          FromTables.save(new Meal(category,name,ingredients));
           System.out.println("The meal has been added!");
     }
 
-
     protected void showRecept() {
-        List<Meal> meals = Tables.findAll();
+        List<Meal> meals = FromTables.findAll();
         if (meals.isEmpty()) {
             System.out.println("No meals saved. Add a meal first.");
             return;
@@ -49,3 +50,4 @@ public class Recept {
         meals.forEach(System.out::println);
         }
     }
+

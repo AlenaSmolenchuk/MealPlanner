@@ -1,5 +1,6 @@
 package mealplanner;
 
+
 import java.util.Scanner;
 
 public class Menu {
@@ -8,18 +9,31 @@ public class Menu {
     Recept recept = new Recept();
 
     public void start(){
-        boolean exit = false;
+        Tables.init();
+        boolean exit = true;
 
-        while(!exit) {
+        while(exit) {
             System.out.println("What would you like to do (add, show, exit)?");
-            switch (Command.getCommand(sc.nextLine())) {
-                case ADD -> recept.addRecept();
-                case SHOW -> recept.showRecept();
-                case EXIT -> exit = true;
-                case UNKNOWN -> {
-                }
+            String output = sc.nextLine();
+            switch (output) {
+                case "add" :
+                    recept.addRecept();
+                    break;
+                case "show" :
+                    recept.showRecept();
+                    break;
+                case "exit" :
+                    System.out.println("Bye!");
+                    exit = false;
+                    break;
+                default:
+                    break;
             }
+        if (!exit){
+            break;
         }
-        System.out.println("Bye!");
+        }
     }
 }
+
+

@@ -19,15 +19,15 @@ public class Tables {
                 connection.setAutoCommit(true);
 
                 Statement statement = connection.createStatement();
-                statement.executeUpdate("CREATE TABLE IF NOT EXISTS meals (" +
-                        "category VARCHAR NOT NULL" +
-                        "meal VARCHAR NOT NULL" +
-                        "meal_id INTEGER ");
+                 statement.executeUpdate("CREATE TABLE IF NOT EXISTS meals (" +
+                        "meal_id INTEGER, " +
+                        "category VARCHAR, " +
+                        "meal VARCHAR); ");
                 statement.executeUpdate("CREATE TABLE IF NOT EXISTS ingredients (" +
-                        "ingredient VARCHAR NOT NULL" +
-                        "ingredient_id INTEGER NOT NULL" +
-                        "meal_id INTEGER FOREIGN KEY");
-
+                        "ingredient_id INTEGER, " +
+                        "ingredient VARCHAR, " +
+                        "meal_id INTEGER); ");
+                
                 statement.close();
                 connection.close();
             } catch (SQLException e) {

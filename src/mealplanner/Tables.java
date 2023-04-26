@@ -6,7 +6,7 @@ import java.util.List;
 
 public class Tables {
 
-    static final String DB_URL = "jdbc:postgresql:meals_db";
+    static final String DB_URL = "jdbc:postgresql://localhost:5433/meals_db";
     static final String USER = "postgres";
     static final String PASS = "1111";
 

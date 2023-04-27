@@ -1,4 +1,4 @@
-package mealplanner;
+ package mealplanner;
 
 public enum Category {
     BREAKFAST("breakfast"),

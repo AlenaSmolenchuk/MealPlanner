@@ -4,7 +4,6 @@ package mealplanner;
 import java.util.Scanner;
 
 public class Menu {
-
     private static final Scanner sc = new Scanner(System.in);
     Recept recept = new Recept();
 

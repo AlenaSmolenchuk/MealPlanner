@@ -10,7 +10,7 @@ public enum Category {
     Category(String name) {
         this.name = name;
     }
- 
+
     public static Category getCategory(String input) {
         for (Category category : Category.values()) {
             if (category.name.equals(input)) return category;

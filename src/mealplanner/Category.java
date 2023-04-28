@@ -1,6 +1,6 @@
 package mealplanner;
 
-public enum Category {
+public  enum Category {
     BREAKFAST("breakfast"),
     LUNCH("lunch"),
     DINNER("dinner");

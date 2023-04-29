@@ -5,7 +5,7 @@ public final class Meal {
     private final Category category;
     private final String name;
     private final String[] ingredients;
-
+ 
     public Meal(Category category, String name, String[] ingredients) {
         this.category = category;
         this.name = name;

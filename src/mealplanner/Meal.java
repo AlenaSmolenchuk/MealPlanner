@@ -11,7 +11,7 @@ public final class Meal {
         this.name = name;
         this.ingredients = ingredients;
     } 
-
+ 
     @Override
     public String toString() {
         return String.format("Category: %s \n" +

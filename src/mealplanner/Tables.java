@@ -11,7 +11,7 @@ public class Tables {
 
     private static int mealId = 1;
     private static int ingredientId = 1;
-
+ 
     public static void init() {
             try {
                 Connection connection = DriverManager.getConnection(DB_URL, USER, PASS);

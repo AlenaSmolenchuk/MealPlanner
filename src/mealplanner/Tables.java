@@ -3,7 +3,7 @@ package mealplanner;
 import java.sql.*; 
 import java.util.ArrayList;
 import java.util.List;
-
+ 
 public class Tables {
     static final String DB_URL = "jdbc:postgresql://localhost:5433/meals_db";
     static final String USER = "postgres";

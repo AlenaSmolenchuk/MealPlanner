@@ -9,7 +9,7 @@ public enum Category {
 
     Category(String name) {
         this.name = name;
-    }
+    } 
 
     public static Category getCategory(String input) {
         for (Category category : Category.values()) {

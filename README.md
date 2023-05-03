@@ -32,7 +32,7 @@ To complete this stage, the program must comply with the following requirements:
 7. Print Bye! and end the program once the exit command is entered;
 8. If users fail to input a valid command, print the following message again: What would you like to do (add, show, exit)?
 
-# Stage 3/6: Database storage (in process)
+# Stage 3/6: Database storage 
 
 In this stage, we're going to store meal data in database tables. When the program restarts, the saved data should be available in the program.
  

@@ -11,6 +11,6 @@ public class Checking {
 
     protected static boolean invalidIngredient(String ingredient){
         return !ingredient
-                .matches("[a-zA-Z ]+") || Objects.equals(ingredient," ");
+                .matches("[a-zA-Z ]+");
     }
 }

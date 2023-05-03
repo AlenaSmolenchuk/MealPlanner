@@ -9,7 +9,7 @@ public class Checking {
         return !name.matches("[a-zA-Z ]+");
     }
 
-    protected static boolean invaludIngredient(String ingredient){
+    protected static boolean invalidIngredient(String ingredient){
         return !ingredient
                 .matches("[a-zA-Z ]+") || Objects.equals(ingredient," ");
     }

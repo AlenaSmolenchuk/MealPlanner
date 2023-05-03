@@ -1,113 +1,85 @@
 package mealplanner;
 
-import java.sql.*; 
-import java.util.ArrayList;
+import java.sql.*;
 import java.util.List;
- 
-public class Tables {
-    static final String DB_URL = "jdbc:postgresql://localhost:5433/meals_db";
-    static final String USER = "postgres";
-    static final String PASS = "1111";
 
-    private static int mealId = 1;
-    private static int ingredientId = 1;
- 
-    public static void init() {
+public class Database {
+
+    Connection connection;
+    Statement statement;
+
+    ResultSet rs;
+    ResultSet is;
+
+    int mealId = 1;
+
+    public void databaseInit() throws SQLException {
+        String DB_URL = "jdbc:postgresql://localhost:5433/meals_db";
+        String USER = "postgres";
+        String PASS = "1111";
+
+        connection = DriverManager.getConnection(DB_URL, USER, PASS);
+        connection.setAutoCommit(true);
+        statement = connection.createStatement();
+        createTables();
+
+    }
+
+    public void createTables() throws SQLException {
+        statement.executeUpdate("create table IF NOT EXISTS meals (" +
+                "category varchar(20)," +
+                "meal varchar(20)," +
+                "meal_id integer" +
+                " )");
+        statement.executeUpdate("create table IF NOT EXISTS ingredients (" +
+                "ingredient varchar(20)," +
+                "meal_id integer," +
+                "ingredient_id integer" +
+                " )");
+    }
+
+    public void insertMeal(String category, String name, List<String> ingredients) throws SQLException {
+
+        statement.executeUpdate(String.format("insert into meals (category, meal, meal_id) values ('%s','%s',%d)", category, name, mealId));
+        ingredients.forEach(item ->
+        {
             try {
-                Connection connection = DriverManager.getConnection(DB_URL, USER, PASS);
-                connection.setAutoCommit(true);
-
-                Statement statement = connection.createStatement();
-                 statement.executeUpdate("CREATE TABLE IF NOT EXISTS meals (" +
-                        "meal_id INTEGER, " +
-                        "category VARCHAR, " +
-                        "meal VARCHAR); ");
-                statement.executeUpdate("CREATE TABLE IF NOT EXISTS ingredients (" +
-                        "ingredient_id INTEGER, " +
-                        "ingredient VARCHAR, " +
-                        "meal_id INTEGER); ");
-                
-                statement.close();
-                connection.close();
+                statement.executeUpdate(String.format("insert into ingredients (ingredient,meal_id) values ('%s', %d)", item, mealId));
             } catch (SQLException e) {
                 throw new RuntimeException(e);
             }
+        });
+        mealId++;
+        System.out.println("The meal has been added!");
     }
 
-    public static void save(Meal meal){
-        try {
-            Connection connection = DriverManager.getConnection(DB_URL, USER, PASS);
-            connection.setAutoCommit(true);
-
-            PreparedStatement preparedStatementMeals = connection
-                    .prepareStatement("INSERT INTO meals (meal_id, category, meal) values (?, ?, ?)");
-            preparedStatementMeals.setLong(1,mealId);
-            preparedStatementMeals.setString(2,meal.category().name);
-            preparedStatementMeals.setString(3,meal.name());
-            preparedStatementMeals.executeUpdate();
-
-            PreparedStatement preparedStatementIngredients = connection
-                    .prepareStatement("INSERT INTO ingredients (ingredient_id, ingredient, meal_id) values (?, ?, ?)");
-            for (String ingredient : meal.ingredients()) {
-                preparedStatementIngredients.setLong(1, ingredientId++);
-                preparedStatementIngredients.setString(2, ingredient);
-                preparedStatementIngredients.setLong(3, mealId);
-                preparedStatementIngredients.executeUpdate();
-            }
-
-            mealId++;
-
-            preparedStatementMeals.close();
-            preparedStatementIngredients.close();
-            connection.close();
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
+    public void showTables() throws SQLException {
+        int rowNum = 0;
+        is = statement.executeQuery("select * from meals");
+        while (is.next()) {
+            rowNum = is.getRow();
         }
-    }
-    public static List<Meal> findAll() {
-        List<Meal> meals = new ArrayList<>();
-        try {
-            Connection connection = DriverManager.getConnection(DB_URL, USER, PASS);
-            connection.setAutoCommit(true);
+        rs = statement.executeQuery("select meals.meal, meals.category, ingredients.ingredient from meals JOIN ingredients ON meals.meal_id = ingredients.meal_id");
+        if (rowNum == 0) {
+            System.out.println("No meals saved. Add a meal first.");
+        } else {
+            String currentMeal = "";
+            while (rs.next()) {
+                String mealName = rs.getString("meal");
+                String category = rs.getString("category");
+                String ingredient = rs.getString("ingredient");
 
-            Statement statement = connection.createStatement();
+                if (!currentMeal.equals(mealName)) {
+                    System.out.println();
+                    System.out.println("Category: " + category);
+                    System.out.println("Name: " + mealName);
+                    System.out.println("Ingredients:");
+                    currentMeal = mealName;
+                }
+                System.out.println(ingredient);
 
-            ResultSet resultMeals = statement.executeQuery("SELECT * FROM meals");
-
-            while (resultMeals.next()) {
-                long currentMealId = resultMeals.getLong("meal_id");
-                PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM ingredients WHERE meal_id = ?");
-                preparedStatement.setLong(1, currentMealId);
-                ResultSet resultIngredients = preparedStatement.executeQuery();
-
-                meals.add(new Meal(
-                        Category.getCategory(resultMeals.getString("category")),
-                        resultMeals.getString("meal"),
-                        getIngredientsByMealId(resultIngredients, resultMeals.getLong("meal_id"))));
-                resultIngredients.close();
-                preparedStatement.close();
             }
-
-            resultMeals.close();
-            statement.close();
-            connection.close();
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
+            System.out.println();
         }
-        return meals;
-    }
-
-    private static String[] getIngredientsByMealId(ResultSet resultIngredients, long mealId) {
-        List<String> ingredients = new ArrayList<>();
-        try {
-            while (resultIngredients.next()) {
-                if (resultIngredients.getLong("meal_id") == mealId)
-                    ingredients.add(resultIngredients.getString("ingredient"));
-            }
-            return ingredients.toArray(new String[0]);
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-
     }
 }

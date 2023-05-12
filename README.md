@@ -1,7 +1,7 @@
 # MealPlanner
 This app will also help create and store shopping lists based on the meals so that no ingredient is missing.
 
-# Stage 1/6: Add meals
+# Stage 1/3: Add meals
 
 Your program should:
 
@@ -19,7 +19,7 @@ ingredient 3
 
 Print the message that the meal is saved successfully: The meal has been added!.
 
-# Stage 2/6: Create a menu 
+# Stage 2/3: Create a menu 
 
 To complete this stage, the program must comply with the following requirements:
 
@@ -32,7 +32,7 @@ To complete this stage, the program must comply with the following requirements:
 7. Print Bye! and end the program once the exit command is entered;
 8. If users fail to input a valid command, print the following message again: What would you like to do (add, show, exit)?
 
-# Stage 3/6: Database storage 
+# Stage 3/3: Database storage 
 
 In this stage, we're going to store meal data in database tables. When the program restarts, the saved data should be available in the program.
  

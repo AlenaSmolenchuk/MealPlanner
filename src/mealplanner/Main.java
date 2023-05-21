@@ -1,6 +1,5 @@
 package mealplanner;
 
-
 import java.sql.SQLException;
 
 public class Main {

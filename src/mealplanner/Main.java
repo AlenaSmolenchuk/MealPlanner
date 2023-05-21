@@ -8,7 +8,6 @@ public class Main {
     Database database = new Database();
     database.databaseInit();
 
-
     while(!menu.isOver) {
       menu.run(database);
     }

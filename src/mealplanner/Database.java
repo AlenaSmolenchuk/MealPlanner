@@ -5,8 +5,8 @@ import java.util.List;
 
 public class Database {
 
-    Connection connection;
-    Statement statement;
+    static final Connection connection;
+    static final Statement statement;
 
     ResultSet rs;
     ResultSet is;

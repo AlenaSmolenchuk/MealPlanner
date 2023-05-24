@@ -13,10 +13,10 @@ public class Menu {
         switch (makeChoice()) {
             case "show":
                 database.showTables();
-            case "add" :
+            case "add":
                 System.out.println("Which meal do you want to add (breakfast, lunch, dinner)?");
                 database.insertMeal(getCategoryInput(),getNameInput(),getIngredients());
-            case "exit" :
+            case "exit":
             isOver = true;
         }
     }

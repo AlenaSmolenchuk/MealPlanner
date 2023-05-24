@@ -22,7 +22,6 @@ public class Database {
         connection.setAutoCommit(true);
         statement = connection.createStatement();
         createTables();
-
     }
 
     public void createTables() throws SQLException {
@@ -77,7 +76,6 @@ public class Database {
                     currentMeal = mealName;
                 }
                 System.out.println(ingredient);
-
             }
             System.out.println();
         }

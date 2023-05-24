@@ -10,7 +10,6 @@ public class Checking {
     }
 
     protected static boolean invalidIngredient(String ingredient){
-        return !ingredient
-                .matches("[a-zA-Z ]+");
+        return !ingredient.matches("[a-zA-Z ]+");
     }
 }

@@ -1,6 +1,7 @@
 package mealplanner;
 
 public final class Meal {
+   
     private final String category;
     private final String name;
     private final String[] ingredients;

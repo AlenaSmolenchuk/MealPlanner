@@ -14,6 +14,7 @@ public class Database {
     int mealId = 1;
 
     public void databaseInit() throws SQLException {
+        
         String DB_URL = "jdbc:postgresql://localhost:5433/meals_db";
         String USER = "postgres";
         String PASS = "1111";
@@ -21,15 +22,18 @@ public class Database {
         connection = DriverManager.getConnection(DB_URL, USER, PASS);
         connection.setAutoCommit(true);
         statement = connection.createStatement();
+       
         createTables();
     }
 
     public void createTables() throws SQLException {
+        
         statement.executeUpdate("create table IF NOT EXISTS meals (" +
                 "category varchar(20)," +
                 "meal varchar(20)," +
                 "meal_id integer" +
                 " )");
+        
         statement.executeUpdate("create table IF NOT EXISTS ingredients (" +
                 "ingredient varchar(20)," +
                 "meal_id integer," +
@@ -41,6 +45,7 @@ public class Database {
 
         statement.executeUpdate(String.format("insert into meals (category, meal, meal_id) values ('%s','%s',%d)", category, name, mealId));
         ingredients.forEach(item ->
+        
         {
             try {
                 statement.executeUpdate(String.format("insert into ingredients (ingredient,meal_id) values ('%s', %d)", item, mealId));
@@ -48,13 +53,18 @@ public class Database {
                 throw new RuntimeException(e);
             }
         });
+        
         mealId++;
+        
         System.out.println("The meal has been added!");
     }
 
     public void showTables() throws SQLException {
+        
         int rowNum = 0;
+        
         is = statement.executeQuery("select * from meals");
+        
         while (is.next()) {
             rowNum = is.getRow();
         }
